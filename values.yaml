@@ -376,7 +376,7 @@ storage:
     # If undefined or empty (default), then no `storageClassName` spec is set,
     # so the default provisioner will be chosen (gp2 on AWS, standard on
     # GKE, AWS & OpenStack).
-    storageClass: "gp2"
+    storageClass: "default"
 
     # Additional labels to apply to the created PersistentVolumeClaims.
     labels: {}
@@ -432,12 +432,12 @@ init:
       # cluster.organization: "'FooCorp - Local Testing'"
       # enterprise.license: "'xxxxx'"
     users: 
-    - name: s3
+    - name: credifyai
       password: admin
     #   # https://www.cockroachlabs.com/docs/stable/create-user.html#parameters
     #   options: [LOGIN]
     databases: 
-    - name: s3
+    - name: credifyai
     #   # https://www.cockroachlabs.com/docs/stable/create-database.html#parameters
     #   options: [encoding='utf-8']
     #   owners: []
