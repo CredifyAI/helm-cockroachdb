@@ -8,7 +8,7 @@
 Below is a brief overview of operating the CockroachDB Helm Chart and some specific implementation details. For additional information on deploying CockroachDB, please see:
 > <https://www.cockroachlabs.com/docs/stable/orchestrate-cockroachdb-with-kubernetes.html>
 
-Note that the documentation requires Helm 3.0 or higher.
+Note that the documentation requires Helm 3 or higher.
 
 ## Prerequisites Details
 
