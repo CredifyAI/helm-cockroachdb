@@ -376,7 +376,7 @@ storage:
     # If undefined or empty (default), then no `storageClassName` spec is set,
     # so the default provisioner will be chosen (gp2 on AWS, standard on
     # GKE, AWS & OpenStack).
-    storageClass: "default"
+    storageClass: "credify-managed-disks"
 
     # Additional labels to apply to the created PersistentVolumeClaims.
     labels: {}
