@@ -182,7 +182,11 @@ statefulset:
     # - --disable-cluster-name-verification
 
   # List of extra environment variables to pass into container
-  env: []
+  env:  
+    - name: COCKROACH_USER
+      value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.username }}{{- end }}"
+    - name: COCKROACH_PASSWORD
+      value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.password }}{{- end }}"
     # - name: COCKROACH_ENGINE_MAX_SYNC_DURATION
     #   value: "24h"
 
@@ -196,7 +200,15 @@ statefulset:
     app.kubernetes.io/component: cockroachdb
 
   # Additional annotations to apply to the Pods of this StatefulSet.
-  annotations: {}
+  annotations:
+    vault.hashicorp.com/agent-inject: "true"                               
+    vault.hashicorp.com/role: "crdb-role"                                 
+    vault.hashicorp.com/agent-inject-secret-database-creds: "crdb/creds/crdb-role" 
+    vault.hashicorp.com/agent-inject-template-database-creds: |
+      {{- with secret "crdb/creds/crdb-role" -}}
+      COCKROACH_USER={{ .Data.username }}
+      COCKROACH_PASSWORD={{ .Data.password }}
+      {{- end }}
 
   # Affinity rules for scheduling Pods of this StatefulSet on Nodes.
   # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity
@@ -277,7 +289,7 @@ statefulset:
     # The name of this ServiceAccount to use.
     # If not set and `create` is `true`, then service account is auto-generated.
     # If not set and `create` is `false`, then it uses default service account.
-    name: ""
+    name: "credifyai-crdb"
     # Additional serviceAccount annotations (e.g. for attaching AWS IAM roles to pods)
     annotations: {}
 
@@ -431,9 +443,10 @@ init:
     clusterSettings:
       # cluster.organization: "'FooCorp - Local Testing'"
       # enterprise.license: "'xxxxx'"
-    users: 
-    - name: credifyai
-      password: admin
+    # users: 
+    # - name: credifyai
+    #   password: admin
+    users: []
     #   # https://www.cockroachlabs.com/docs/stable/create-user.html#parameters
     #   options: [LOGIN]
     databases: 
