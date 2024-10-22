@@ -292,6 +292,7 @@ statefulset:
     name: "credifyai-crdb"
     # Additional serviceAccount annotations (e.g. for attaching AWS IAM roles to pods)
     annotations: {}
+  initContainers: []
 
 service:
   ports:
