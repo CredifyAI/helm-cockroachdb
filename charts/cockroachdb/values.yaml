@@ -379,7 +379,7 @@ storage:
   # If `enabled` is `true` then a PersistentVolumeClaim will be created and
   # used to store CockroachDB's data, otherwise `hostPath` is used.
   persistentVolume:
-    enabled: true
+    enabled: false
 
     size: 10Gi
 
@@ -389,7 +389,7 @@ storage:
     # If undefined or empty (default), then no `storageClassName` spec is set,
     # so the default provisioner will be chosen (gp2 on AWS, standard on
     # GKE, AWS & OpenStack).
-    storageClass: "credify-managed-disks"
+    storageClass: {}
 
     # Additional labels to apply to the created PersistentVolumeClaims.
     labels: {}
@@ -450,8 +450,7 @@ init:
     users: []
     #   # https://www.cockroachlabs.com/docs/stable/create-user.html#parameters
     #   options: [LOGIN]
-    databases: 
-    - name: credifyai
+    databases: []
     #   # https://www.cockroachlabs.com/docs/stable/create-database.html#parameters
     #   options: [encoding='utf-8']
     #   owners: []
