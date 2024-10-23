@@ -3,7 +3,23 @@ entries:
   cockroachdb:
   - apiVersion: v1
     appVersion: 24.1.3
-    created: "2024-10-23T10:49:25.820167968Z"
+    created: "2024-10-23T11:30:21.714591301Z"
+    description: CockroachDB is a scalable, survivable, strongly-consistent SQL database.
+    digest: 11aaca6e84255e8bc446ed68bf4317ae39d2aaa7eb7ff18670e78d2566ab9f83
+    home: https://www.cockroachlabs.com
+    icon: https://raw.githubusercontent.com/cockroachdb/cockroach/master/docs/media/cockroach_db.png
+    maintainers:
+    - email: helm-charts@cockroachlabs.com
+      name: cockroachlabs
+    name: cockroachdb
+    sources:
+    - https://github.com/cockroachdb/cockroach
+    urls:
+    - https://CredifyAI.github.io/helm-cockroachdb/cockroachdb-13.0.15.tgz
+    version: 13.0.15
+  - apiVersion: v1
+    appVersion: 24.1.3
+    created: "2024-10-23T11:30:21.712982497Z"
     description: CockroachDB is a scalable, survivable, strongly-consistent SQL database.
     digest: 807f58fcadf906fec6869c147d57e578d13f25a43f9eb85a599469e295638092
     home: https://www.cockroachlabs.com
@@ -19,7 +35,7 @@ entries:
     version: 13.0.14
   - apiVersion: v1
     appVersion: 24.1.3
-    created: "2024-10-23T10:49:25.818760396Z"
+    created: "2024-10-23T11:30:21.711554941Z"
     description: CockroachDB is a scalable, survivable, strongly-consistent SQL database.
     digest: fe83f34321e3b55f7f04ece359c090d8be1e1341d39833cd39ecb07b2eb8c8ef
     home: https://www.cockroachlabs.com
@@ -33,4 +49,4 @@ entries:
     urls:
     - https://CredifyAI.github.io/helm-cockroachdb/cockroachdb-13.0.13.tgz
     version: 13.0.13
-generated: "2024-10-23T10:49:25.81710929Z"
+generated: "2024-10-23T11:30:21.709923985Z"
