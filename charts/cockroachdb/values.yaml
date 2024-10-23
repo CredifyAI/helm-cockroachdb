@@ -285,7 +285,7 @@ statefulset:
 
   serviceAccount:
     # Specifies whether this ServiceAccount should be created.
-    create: true
+    create: false
     # The name of this ServiceAccount to use.
     # If not set and `create` is `true`, then service account is auto-generated.
     # If not set and `create` is `false`, then it uses default service account.
