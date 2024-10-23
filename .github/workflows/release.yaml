@@ -26,7 +26,16 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.5.0
-        env:
-          CR_TOKEN: "${{ github.token }}" 
+      - name: Package and Push
+        run: |
+          mkdir -p .cr-release-packages
+          helm package charts/cockroachdb -d .cr-release-packages/
+          git checkout gh-pages
+          mv .cr-release-packages/*.tgz .
+          helm repo index . --url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          git add .
+          git commit -m "Release chart"
+          git push origin gh-pages
+
+env:
+  CR_TOKEN: "${{ github.token }}"
