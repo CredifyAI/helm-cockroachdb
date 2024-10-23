@@ -182,11 +182,11 @@ statefulset:
     # - --disable-cluster-name-verification
 
   # List of extra environment variables to pass into container
-  env:  
-    - name: COCKROACH_USER
-      value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.username }}{{- end }}"
-    - name: COCKROACH_PASSWORD
-      value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.password }}{{- end }}"
+  env: []
+    # - name: COCKROACH_USER
+    #   value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.username }}{{- end }}"
+    # - name: COCKROACH_PASSWORD
+    #   value: "{{- with secret 'crdb/creds/crdb-role' -}}{{ .Data.password }}{{- end }}"
     # - name: COCKROACH_ENGINE_MAX_SYNC_DURATION
     #   value: "24h"
 
@@ -200,15 +200,15 @@ statefulset:
     app.kubernetes.io/component: cockroachdb
 
   # Additional annotations to apply to the Pods of this StatefulSet.
-  annotations:
-    vault.hashicorp.com/agent-inject: "true"                               
-    vault.hashicorp.com/role: "crdb-role"                                 
-    vault.hashicorp.com/agent-inject-secret-database-creds: "crdb/creds/crdb-role" 
-    vault.hashicorp.com/agent-inject-template-database-creds: |
-      {{- with secret "crdb/creds/crdb-role" -}}
-      COCKROACH_USER={{ .Data.username }}
-      COCKROACH_PASSWORD={{ .Data.password }}
-      {{- end }}
+  annotations: []
+    # vault.hashicorp.com/agent-inject: "true"                               
+    # vault.hashicorp.com/role: "crdb-role"                                 
+    # vault.hashicorp.com/agent-inject-secret-database-creds: "crdb/creds/crdb-role" 
+    # vault.hashicorp.com/agent-inject-template-database-creds: |
+    #   {{- with secret "crdb/creds/crdb-role" -}}
+    #   COCKROACH_USER={{ .Data.username }}
+    #   COCKROACH_PASSWORD={{ .Data.password }}
+    #   {{- end }}
 
   # Affinity rules for scheduling Pods of this StatefulSet on Nodes.
   # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity
